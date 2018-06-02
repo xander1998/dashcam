@@ -1,0 +1,82 @@
+#Dashcam_Body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#Dashcam_Gametime {
+    position: absolute;
+    left: 10px;
+    top: 310px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_Clocktime {
+    position: absolute;
+    left: 10px;
+    top: 360px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_DateTime {
+    position: absolute;
+    left: 10px;
+    top: 410px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_Unitnumber {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_Unitname {
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_Unitspeed {
+    position: absolute;
+    right: 10px;
+    top: 130px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#Dashcam_Image {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    top: calc(100% - 250px);
+    transform: translateX(-50%);
+    opacity: 0.2;
+}
+
+#Dashcam_Info {
+    position: absolute;
+    left: 50%;
+    top: calc(100% - 180px);
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}

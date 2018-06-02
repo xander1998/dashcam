@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Xander1998's Dashcam</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="Dashcam_Body" v-show="showDash">
+            <div id="Dashcam_Data">
+                <div id="Dashcam_Gametime">Video: {{ gameTime }}</div>
+                <div id="Dashcam_DateTime">Date: {{ clockTime.month }} / {{clockTime.day}} / {{clockTime.year}}</div>
+                <div id="Dashcam_ClockTime">Time: {{clockTime.hour}} : {{clockTime.minute}} : {{clockTime.second}}</div>
+                <div id="Dashcam_Unitnumber">Unit: {{ unitNumber }}</div>
+                <div id="Dashcam_Unitname">Unit Name: {{ unitName }}</div>
+                <div id="Dashcam_Unitspeed">Unit Speed: {{ unitSpeed }} {{ unitSpeedType }}</div>
+                <div>
+                    <img id="Dashcam_Image" src="./images/seal.png">
+                    <div id="Dashcam_Info">
+                        <div>{{ dashMessageOne }}</div>
+                        <div style="color: rgb(25, 167, 255); font-size: 25px; font-weight: bold; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;">{{ dashLabel }}</div>
+                        <div>{{ dashMessageTwo }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./vue.min.js"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>
