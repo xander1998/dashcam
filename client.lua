@@ -44,15 +44,29 @@ end)
 
 function EnableDash()
     attachedVehicle = GetVehiclePedIsIn(GetPlayerPed(PlayerId()), false)
-    StartScreenEffect(screenEffect, -1, false)
-    local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    RenderScriptCams(1, 0, 0, 1, 1)
-    SetFocusEntity(attachedVehicle)
-    cameraHandle = cam
-    SendNUIMessage({
-        type = "enabledash"
-    })
-    dashcamActive = true
+    if DashcamConfig.RestrictVehicles then
+        if CheckVehicleRestriction() then
+            StartScreenEffect(screenEffect, -1, false)
+            local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
+            RenderScriptCams(1, 0, 0, 1, 1)
+            SetFocusEntity(attachedVehicle)
+            cameraHandle = cam
+            SendNUIMessage({
+                type = "enabledash"
+            })
+            dashcamActive = true
+        end
+    else
+        StartScreenEffect(screenEffect, -1, false)
+        local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
+        RenderScriptCams(1, 0, 0, 1, 1)
+        SetFocusEntity(attachedVehicle)
+        cameraHandle = cam
+        SendNUIMessage({
+            type = "enabledash"
+        })
+        dashcamActive = true
+    end
 end
 
 function DisableDash()
@@ -90,4 +104,25 @@ function UpdateDashcam()
             useMPH = DashcamConfig.useMPH
         }
     })
+end
+
+function CheckVehicleRestriction()
+    if DashcamConfig.RestrictionType == "custom" then
+        for a = 1, #DashcamConfig.AllowedVehicles do
+            print(GetHashKey(DashcamConfig.AllowedVehicles[a]))
+            print(GetEntityModel(attachedVehicle))
+            if GetHashKey(DashcamConfig.AllowedVehicles[a]) == GetEntityModel(attachedVehicle) then
+                return true
+            end
+        end
+        return false
+    elseif DashcamConfig.RestrictionType == "class" then
+        if GetVehicleClass(attachedVehicle) == 18 then
+            return true
+        else
+            return false
+        end
+    else
+        return false
+    end
 end
