@@ -1,3 +1,3 @@
 DashcamConfig = {}
 
-DashcamConfig.useMPH = true -- False will turn it to KMH
+DashcamConfig.useMPH = false -- False will turn it to KMH
