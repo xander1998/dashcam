@@ -9,4 +9,4 @@ Add dashcam into server.cfg
 
 # Using dashcam
 
-/dashcam - Enables / Disabled
+Keypress "C" to toggle the dashcam on and off.
