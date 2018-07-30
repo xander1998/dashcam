@@ -2,8 +2,6 @@ local dashcamActive = false
 local attachedVehicle = nil
 local cameraHandle = nil
 
-local screenEffect = "HeistLocate"
-
 Citizen.CreateThread(function()
     while true do
         if dashcamActive then
@@ -46,7 +44,8 @@ function EnableDash()
     attachedVehicle = GetVehiclePedIsIn(GetPlayerPed(PlayerId()), false)
     if DashcamConfig.RestrictVehicles then
         if CheckVehicleRestriction() then
-            StartScreenEffect(screenEffect, -1, false)
+            SetTimecycleModifier("scanline_cam_cheap")
+            SetTimecycleModifierStrength(2.2)
             local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
             RenderScriptCams(1, 0, 0, 1, 1)
             SetFocusEntity(attachedVehicle)
@@ -57,7 +56,8 @@ function EnableDash()
             dashcamActive = true
         end
     else
-        StartScreenEffect(screenEffect, -1, false)
+        SetTimecycleModifier("scanline_cam_cheap")
+        SetTimecycleModifierStrength(2.2)
         local cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
         RenderScriptCams(1, 0, 0, 1, 1)
         SetFocusEntity(attachedVehicle)
@@ -70,7 +70,7 @@ function EnableDash()
 end
 
 function DisableDash()
-    StopScreenEffect(screenEffect)
+    ClearTimecycleModifier("scanline_cam_cheap")
     RenderScriptCams(0, 0, 1, 1, 1)
     DestroyCam(cameraHandle, false)
     SetFocusEntity(GetPlayerPed(PlayerId()))
